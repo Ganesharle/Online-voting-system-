@@ -62,13 +62,16 @@ public class OnlineVotingSystem {
 	        } catch (SQLIntegrityConstraintViolationException e) {
 	            System.out.println("Error: Voter ID already exists!");
 	        } catch (SQLException e) {
-	            System.out.println("Database error: " + e.getMessage());
+	            System.out.println("Voter Id already exists!");
 	        }
 	    }
 
 	    private static void loginAndVote(Scanner scanner) {
 	        System.out.print("Enter Voter ID: ");
 	        String voterId = scanner.nextLine().trim();
+
+		System.out.print("Enter Voter Name:");
+		String name=scanner.nextLine().trim();
 
 	        String checkVoterQuery = "SELECT * FROM voters WHERE voter_id = ?";
 	        String checkVoteQuery = "SELECT * FROM votes WHERE voter_id = ?";
